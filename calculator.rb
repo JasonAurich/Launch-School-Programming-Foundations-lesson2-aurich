@@ -37,7 +37,6 @@ end
 prompt("Hello, #{name}!")
 
 loop do # MAIN LOOP
-
   number1 = ''
   loop do
     prompt("What's the first number?")
