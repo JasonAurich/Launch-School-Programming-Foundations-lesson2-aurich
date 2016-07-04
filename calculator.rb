@@ -64,11 +64,12 @@ loop do # MAIN LOOP
 
   operator_prompt = <<-MSG
     What operation would you like to perform?
-    1  ADD
-    2  SUBTRACT
-    3  MULTIPLY
-    4  DIVIDE
+    1 |   ADD
+    2 |   SUBTRACT
+    3 |   MULTIPLY
+    4 |   DIVIDE
   MSG
+
   prompt(operator_prompt)
 
   operator = ''
@@ -78,7 +79,7 @@ loop do # MAIN LOOP
     if %w(1 2 3 4).include?(operator)
       break
     else
-      prompt("Please choose only 1, 2, 3, or 4.")
+      prompt("Please choose only 1, 2, 3 or 4.")
     end
   end
 
@@ -93,12 +94,12 @@ loop do # MAIN LOOP
               number1.to_i() * number2.to_i()
             when '3'
               number1.to_i() / number2.to_i()
-  end
+            end
 
   prompt("The result is #{result}.")
   prompt("Would you like to perform another calculation (y/n)?")
-  again = Kernel.gets().chomp()
-  break unless again.downcase().start_with?('y')
+  again_answer = Kernel.gets().chomp()
+  break unless again_answer.downcase().start_with('y')
 end
 
 prompt("Thanks for using calculator. Goodbye!")
