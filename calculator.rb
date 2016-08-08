@@ -2,8 +2,16 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+def integer?(num)
+  Integer(num) rescue false
+end
+
+def float?(num)
+  Float(num) rescue false
+end
+
 def valid_number?(num)
-  num.to_i() != 0
+  integer?(num) || float?(num)
 end
 
 def operation_to_msg(op)
@@ -18,6 +26,12 @@ def operation_to_msg(op)
     'Dividing'
   end
 end
+
+def integer?(input)
+
+end
+# EXECUTION
+# —————————————————————————————————————————————————————————————————————————————————————————
 
 puts "\e[H\e[2J"
 
@@ -42,7 +56,7 @@ loop do # MAIN LOOP
     prompt("What's the first number?")
     number1 = Kernel.gets().chomp()
 
-    if valid_number?(number1)
+    if integer?(number1)
       break
     else
       prompt("Hmm ... that isn't a valid number. Try again.")
@@ -54,7 +68,7 @@ loop do # MAIN LOOP
     prompt("What's the second number?")
     number2 = Kernel.gets().chomp()
 
-    if valid_number?(number2)
+    if integer?(number2)
       break
     else
       prompt("Hmm ... that isn't a valid number. Try again.")
@@ -98,7 +112,7 @@ loop do # MAIN LOOP
   prompt("The result is #{result}.")
   prompt("Would you like to perform another calculation (y/n)?")
   again_answer = Kernel.gets().chomp()
-  break unless again_answer.downcase().start_with('y')
+  break unless again_answer.downcase().start_with?('y')
 end
 
 prompt("Thanks for using calculator. Goodbye!")
