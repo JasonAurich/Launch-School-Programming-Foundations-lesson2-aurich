@@ -15,16 +15,20 @@ def valid_number?(num)
 end
 
 def operation_to_msg(op)
-  case op
-  when '1'
-    'Adding'
-  when '2'
-    'Subtracting'
-  when '3'
-    'Multiplying'
-  when '4'
-    'Dividing'
-  end
+  operation = case op
+                when '1'
+                  'Adding'
+                when '2'
+                  'Subtracting'
+                when '3'
+                  'Multiplying'
+                when '4'
+                  'Dividing'
+                end
+
+  # additional lines of code
+
+  operation
 end
 
 def integer?(input)
