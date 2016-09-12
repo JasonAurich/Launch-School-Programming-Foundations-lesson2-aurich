@@ -1,21 +1,113 @@
 ---
+  en:
+    welcome:          |
 
-    welcome:          "Welcome to Calculator! Please enter your name:"
+                      Welcome to Calculator! Please enter your name:
     valid_name:       "Please be sure to use a valid name."
     # greeting:         "Hello, %{name}!"
-    number1:          "What is your first of two numbers?"
-    number2:          "What is your second number?"
+    number1:          |
+
+                      What is your first of two numbers?
+    number2:          |
+
+                      What is your second number?
     # no_blank:        "Please do not leave it blank."
     invalid_number:   "Hmm ... that isn't a valid number. Try again."
-    operator_prompt:  "What operation would you like to perform?"
+    language_options: |
+                      Please select a language:
+
+                        1 | English
+                        2 | Spanish
+                        3 | Hebrew
+    invalid_language: |
+
+                      Please choose only 1, 2 or 3.
     operation_options: |
+
                         What operation would you like to perform?
-                        1 |  ADD
-                        2 |  SUBTRACT
-                        3 |  MULTIPLY
-                        4 |  DIVIDE
-    invalid_operator: "Please choose only 1, 2, 3 or 4."
+
+                          1 |  ADD
+                          2 |  SUBTRACT
+                          3 |  MULTIPLY
+                          4 |  DIVIDE
+    invalid_operator: |
+
+                      Please choose only 1, 2, 3 or 4.
     # operation_msg:    "%{op_verb} the two numbers  . . ."
     # result:           "The result is %{result}."
-    again?:           "Would you like to perform another calculation (y/n)?"
-    goodbye:          "Thanks for using calculator. Goodbye!"
+    again?:           |
+
+                      Would you like to perform another calculation (y/n)?
+    goodbye:          |
+
+                      Thanks for using calculator. Goodbye!
+
+  es:
+    welcome:          |
+
+                      Bienvenido a la calculadora! Entre su nombre, por favor:
+    valid_name:       "Por favor asegúrese de usar un nombre válido."
+    number1:          |
+
+                      ¿Cuál es su primera de dos números?
+    number2:          |
+
+                      ¿Cuál es su segundo número?
+    invalid_number:   "Hmm ... que no es un número válido. Inténtalo de nuevo."
+    language_options: |
+                      Por favor, seleccione un idioma:
+
+                        1 | Inglés
+                        2 | Español
+                        3 | Hebreo
+    invalid_language: |
+
+                      Por favor seleccione sólo el 1, 2 o 3.
+    operation_options: |
+                        ¿Qué operación desea realizar?
+
+                          1 |  SUMAR
+                          2 |  RESTAR
+                          3 |  MULTIPLICAR
+                          4 |  DIVIDIR
+    invalid_operator: |
+
+                      Por favor seleccione sólo el 1, 2, 3 o 4.
+    again?:           "¿Le gustaría realizar otro cálculo (s/n)?"
+    goodbye:          "Gracias por usar calculadora. ¡Adiós!"
+
+  hb:
+    welcome:          |
+
+                      ברוכים הבאים מחשבון! אנא הכנס את :שמך
+    valid_name:       ".אנא הקפד להשתמש שם חוקי"
+    number1:          |
+
+                      ?מהו הראשון שלך של שני מספרים
+    number2:          |
+
+                      ?מהו המספר השני שלך
+    invalid_number:   ".הממ ... זה לא מספר חוקי. נסה שוב"
+    language_options: |
+                      :אנא בחר שפה
+
+                        1 | אנגלית
+                        2 | ספרדית
+                        3 | עִברִית
+    invalid_language: |
+
+                      .זה לא שפה תקפה. בחר רק 1 2 או 3
+    operation_options: |
+                        ?מה הפעולה היית רוצה לבצע
+
+                          1 |  לְהוֹסִיף
+                          2 |   לְחַסֵר
+                          3 |  לְהַכפִּיל
+                          4 |   לחלק
+    invalid_operator: |
+
+                      .בחר 1 בלבד, 2, 3 או 4
+    again?:            |
+
+                        האם אתה רוצה לבצע חישוב אחר (כ/ל)״?
+    goodbye:          "!תודה על השימוש במחשבון. הֱיה שלום"

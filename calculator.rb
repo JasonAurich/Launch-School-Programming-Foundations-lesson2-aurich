@@ -1,6 +1,38 @@
 require 'yaml'
 
-MESSAGES = YAML.load_file('calculator_messages.yml')
+MESSAGES_FILE = YAML.load_file('calculator_messages.yml')
+
+def language_input
+
+  lang = ''
+  message("language_options")
+
+  loop do
+    lang = gets.chomp
+    %w(1 2 3).include?(lang) ? break : message("invalid_language")
+  end
+
+  @language = case lang
+              when '1'
+                'en'
+              when '2'
+                'es'
+              when '3'
+                'hb'
+              end
+end
+
+def messages(message, lang)
+  lang = '' ? MESSAGES_FILE['en'][message] : MESSAGES_FILE[lang][message]
+
+end
+
+def message(key)
+  # message = messages(key, @language)
+  message = messages(key, 'es')
+  puts(" #{message}")
+  puts ''
+end
 
 def integer?(num)
   num % 1 == 0 ? true : false
@@ -14,17 +46,7 @@ def valid_number?(num)
   integer?(num) || float?(num)
 end
 
-# def convert_number(num)
-#   if integer?(num)
-#     num = num.to_i
-#   elsif float?(num)
-#     num = num.to_f
-#   else
-#     false
-#   end
-# end
-
-def operation_verb(op)
+def verbalize(op)
   op_verb = case op
             when '1'
               'Adding'
@@ -46,46 +68,47 @@ def operation_input
 
   loop do
     @operation = gets.chomp
-    %w(1 2 3 4).include?(@operation) ? break : puts('',MESSAGES['invalid_operator'])
+    %w(1 2 3 4).include?(@operation) ? break : message('invalid_operator')
   end
-  puts('',"#{operation_verb(@operation)} the two numbers  . . .")
+  puts('',"#{verbalize(@operation)} the two numbers  . . .")
 end
 
-# EXECUTION ———————————————————————————————————————————————————————————————————————————
+# EXECUTION —————————————————————————————————————————————————————
 
-puts "\e[H\e[2J"    # clear screen
+puts "\e[H\e[2J"          # clear screen
 
-puts(MESSAGES['welcome'],'')
+language_input
+message("welcome")
 
 name = ''
 
 loop do
   name = gets.chomp
-  name.empty?() ? puts(MESSAGES['valid_name']) : break
+  name.empty?() ? message("valid_name") : break
 end
 
-puts('',"Hello, #{name}!")
+puts('',"Hello, #{name}!",'')
 # MESSAGES['greeting'] % { name: name }
 
-# MAIN LOOP ———————————————————————————————————————————————————————————————————————————
+# MAIN LOOP —————————————————————————————————————————————————————
 
 loop do
 
   @number1 = ''
   loop do
-    puts('',MESSAGES['number1'])
+    message("number1")
     @number1 = gets.chomp
-    valid_number?(@number1) ? break : puts('',MESSAGES['invalid_number'])
+    valid_number?(@number1) ? break : message("invalid_number")
   end
 
   @number2 = ''
   loop do
-    puts('',MESSAGES['number2'])
+    message("number2")
     @number2 = gets.chomp
-    valid_number?(@number2) ? break : puts('',MESSAGES['invalid_number'])
+    valid_number?(@number2) ? break : message("invalid_number")
   end
 
-  puts('',MESSAGES['operation_options'],'')
+  message("operation_options")
   # puts(operation_options)
 
   operation_input
@@ -110,20 +133,15 @@ loop do
     puts("The result is #{result}.")
   end
 
-  puts('',MESSAGES['again?'])
-  gets.chomp.casecmp('y') == 0 ? nil : break
-end
-
-puts('',MESSAGES['goodbye'])
-
-
-
-
-def convert_number(num)
-  case num
-  when num.to_i.to_s == num
-    num = num.to_i
-  when num.to_f.to_s == num
-    num = num.to_f
+  message('again?')
+  case @language
+  when 'en'
+    gets.chomp.casecmp('y') == 0 ? nil : break
+  when 'es'
+    gets.chomp.casecmp('s') == 0 ? nil : break
+  when 'hb'
+    gets.chomp.casecmp('y') == 0 ? nil : break
   end
 end
+
+message('goodbye')
