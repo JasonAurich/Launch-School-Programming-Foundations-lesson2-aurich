@@ -1,0 +1,21 @@
+---
+
+    welcome:          "Welcome to Calculator! Please enter your name:"
+    valid_name:       "Please be sure to use a valid name."
+    # greeting:         "Hello, %{name}!"
+    number1:          "What is your first of two numbers?"
+    number2:          "What is your second number?"
+    # no_blank:        "Please do not leave it blank."
+    invalid_number:   "Hmm ... that isn't a valid number. Try again."
+    operator_prompt:  "What operation would you like to perform?"
+    operation_options: |
+                        What operation would you like to perform?
+                        1 |  ADD
+                        2 |  SUBTRACT
+                        3 |  MULTIPLY
+                        4 |  DIVIDE
+    invalid_operator: "Please choose only 1, 2, 3 or 4."
+    # operation_msg:    "%{op_verb} the two numbers  . . ."
+    # result:           "The result is %{result}."
+    again?:           "Would you like to perform another calculation (y/n)?"
+    goodbye:          "Thanks for using calculator. Goodbye!"

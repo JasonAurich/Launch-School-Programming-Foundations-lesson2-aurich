@@ -1,122 +1,126 @@
-def prompt(message)
-  Kernel.puts("=> #{message}")
-end
+require 'yaml'
+
+MESSAGES = YAML.load_file('calculator_messages.yml')
 
 def integer?(num)
-  Integer(num) rescue false
+  num % 1 == 0 ? true : false
 end
 
 def float?(num)
-  Float(num) rescue false
+  num % 1 != 0 ? true : false
 end
 
 def valid_number?(num)
   integer?(num) || float?(num)
 end
 
-def operation_to_msg(op)
-  operation = case op
-                when '1'
-                  'Adding'
-                when '2'
-                  'Subtracting'
-                when '3'
-                  'Multiplying'
-                when '4'
-                  'Dividing'
-                end
+# def convert_number(num)
+#   if integer?(num)
+#     num = num.to_i
+#   elsif float?(num)
+#     num = num.to_f
+#   else
+#     false
+#   end
+# end
 
-  # additional lines of code
-
-  operation
-end
-
-def integer?(input)
-
-end
-# EXECUTION
-# —————————————————————————————————————————————————————————————————————————————————————————
-
-puts "\e[H\e[2J"
-
-prompt("Welcome to Calculator! Please enter your name:")
-
-name = ''
-loop do
-  name = Kernel.gets().chomp()
-
-  if name.empty?()
-    prompt("Make sure to use a valid name.")
-  else
-    break
-  end
-end
-
-prompt("Hello, #{name}!")
-
-loop do # MAIN LOOP
-  number1 = ''
-  loop do
-    prompt("What's the first number?")
-    number1 = Kernel.gets().chomp()
-
-    if integer?(number1)
-      break
-    else
-      prompt("Hmm ... that isn't a valid number. Try again.")
-    end
-  end
-
-  number2 = ''
-  loop do
-    prompt("What's the second number?")
-    number2 = Kernel.gets().chomp()
-
-    if integer?(number2)
-      break
-    else
-      prompt("Hmm ... that isn't a valid number. Try again.")
-    end
-  end
-
-  operator_prompt = <<-MSG
-    What operation would you like to perform?
-    1 |   ADD
-    2 |   SUBTRACT
-    3 |   MULTIPLY
-    4 |   DIVIDE
-  MSG
-
-  prompt(operator_prompt)
-
-  operator = ''
-  loop do
-    operator = Kernel.gets().chomp()
-
-    if %w(1 2 3 4).include?(operator)
-      break
-    else
-      prompt("Please choose only 1, 2, 3 or 4.")
-    end
-  end
-
-  prompt("#{operation_to_msg(operator)} the two numbers  . . .")
-
-  result =  case operator
+def operation_verb(op)
+  op_verb = case op
             when '1'
-              number1.to_i() + number2.to_i()
+              'Adding'
             when '2'
-              number1.to_i() - number2.to_i()
+              'Subtracting'
             when '3'
-              number1.to_i() * number2.to_i()
-            when '3'
-              number1.to_i() / number2.to_i()
+              'Multiplying'
+            when '4'
+              'Dividing'
             end
 
-  prompt("The result is #{result}.")
-  prompt("Would you like to perform another calculation (y/n)?")
-  again_answer = Kernel.gets().chomp()
-  break unless again_answer.downcase().start_with?('y')
+  # additional lines of code
+  # puts(MESSAGES['operation_to_msg'])
+  op_verb
 end
 
-prompt("Thanks for using calculator. Goodbye!")
+def operation_input
+  @operation = ''
+
+  loop do
+    @operation = gets.chomp
+    %w(1 2 3 4).include?(@operation) ? break : puts('',MESSAGES['invalid_operator'])
+  end
+  puts('',"#{operation_verb(@operation)} the two numbers  . . .")
+end
+
+# EXECUTION ———————————————————————————————————————————————————————————————————————————
+
+puts "\e[H\e[2J"    # clear screen
+
+puts(MESSAGES['welcome'],'')
+
+name = ''
+
+loop do
+  name = gets.chomp
+  name.empty?() ? puts(MESSAGES['valid_name']) : break
+end
+
+puts('',"Hello, #{name}!")
+# MESSAGES['greeting'] % { name: name }
+
+# MAIN LOOP ———————————————————————————————————————————————————————————————————————————
+
+loop do
+
+  @number1 = ''
+  loop do
+    puts('',MESSAGES['number1'])
+    @number1 = gets.chomp
+    valid_number?(@number1) ? break : puts('',MESSAGES['invalid_number'])
+  end
+
+  @number2 = ''
+  loop do
+    puts('',MESSAGES['number2'])
+    @number2 = gets.chomp
+    valid_number?(@number2) ? break : puts('',MESSAGES['invalid_number'])
+  end
+
+  puts('',MESSAGES['operation_options'],'')
+  # puts(operation_options)
+
+  operation_input
+
+  result =  case @operation
+            when '1'
+              @number1.to_f + @number2.to_f
+            when '2'
+              @number1.to_f - @number2.to_f
+            when '3'
+              @number1.to_f * @number2.to_f
+            when '4'
+              @number1.to_f / @number2.to_f
+            end
+
+  if integer?(result)
+    puts("The result is #{result.truncate}.")
+  else
+    puts("The result is #{result}.")
+  end
+
+  puts('',MESSAGES['again?'])
+  gets.chomp.casecmp('y') == 0 ? nil : break
+end
+
+puts('',MESSAGES['goodbye'])
+
+
+
+
+def convert_number(num)
+  case num
+  when num.to_i.to_s == num
+    num = num.to_i
+  when num.to_f.to_s == num
+    num = num.to_f
+  end
+end
