@@ -2,35 +2,36 @@ require 'yaml'
 
 MESSAGES_FILE = YAML.load_file('calculator_messages.yml')
 
-def language_input
+# def language_input
+#
+#   lang = ''
+#   message("language_options")
+#
+#   loop do
+#     lang = gets.chomp
+#     %w(1 2 3).include?(lang) ? break : message("invalid_language")
+#   end
+#
+#   @language = case lang
+#               when '1'
+#                 'en'
+#               when '2'
+#                 'es'
+#               when '3'
+#                 'hb'
+#               end
+# end
 
-  lang = ''
-  message("language_options")
-
-  loop do
-    lang = gets.chomp
-    %w(1 2 3).include?(lang) ? break : message("invalid_language")
-  end
-
-  @language = case lang
-              when '1'
-                'en'
-              when '2'
-                'es'
-              when '3'
-                'hb'
-              end
-end
+LANGUAGE = 'es'
 
 def messages(message, lang)
-  lang = '' ? MESSAGES_FILE['en'][message] : MESSAGES_FILE[lang][message]
-
+  MESSAGES_FILE[lang][message]
 end
 
 def message(key)
   # message = messages(key, @language)
-  message = messages(key, 'es')
-  puts(" #{message}")
+  message = messages(key, LANGUAGE)
+  puts("#{message}")
   puts ''
 end
 
@@ -77,11 +78,9 @@ end
 
 puts "\e[H\e[2J"          # clear screen
 
-language_input
 message("welcome")
 
 name = ''
-
 loop do
   name = gets.chomp
   name.empty?() ? message("valid_name") : break
@@ -94,18 +93,18 @@ puts('',"Hello, #{name}!",'')
 
 loop do
 
-  @number1 = ''
+  number1 = ''
   loop do
     message("number1")
-    @number1 = gets.chomp
-    valid_number?(@number1) ? break : message("invalid_number")
+    number1 = gets.chomp
+    valid_number?(number1) ? break : message("invalid_number")
   end
 
-  @number2 = ''
+  number2 = ''
   loop do
     message("number2")
-    @number2 = gets.chomp
-    valid_number?(@number2) ? break : message("invalid_number")
+    number2 = gets.chomp
+    valid_number?(number2) ? break : message("invalid_number")
   end
 
   message("operation_options")
@@ -113,20 +112,21 @@ loop do
 
   operation_input
 
-  @number1 = @number1.to_f
-  @number2 = @number2.to_f
+  number1 = number1.to_f
+  number2 = number2.to_f
 
   result =  case @operation
             when '1'
-              @number1 + @number2
+              number1 + number2
             when '2'
-              @number1 - @number2
+              number1 - number2
             when '3'
-              @number1 * @number2
+              number1 * number2
             when '4'
-              @number1 / @number2
+              number1 / number2
             end
 
+  puts ''
   if integer?(result)
     puts("The result is #{result.truncate}.")
   else
@@ -134,7 +134,8 @@ loop do
   end
 
   message('again?')
-  case @language
+  # gets.chomp.casecmp('y') == 0 ? nil : break
+  case LANGUAGE
   when 'en'
     gets.chomp.casecmp('y') == 0 ? nil : break
   when 'es'

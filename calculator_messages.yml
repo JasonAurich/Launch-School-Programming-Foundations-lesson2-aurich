@@ -13,12 +13,12 @@
                       What is your second number?
     # no_blank:        "Please do not leave it blank."
     invalid_number:   "Hmm ... that isn't a valid number. Try again."
-    language_options: |
-                      Please select a language:
-
-                        1 | English
-                        2 | Spanish
-                        3 | Hebrew
+    # language_options: |
+    #                   Please select a language:
+    #
+    #                     1 | English
+    #                     2 | Spanish
+    #                     3 | Hebrew
     invalid_language: |
 
                       Please choose only 1, 2 or 3.
@@ -46,25 +46,25 @@
     welcome:          |
 
                       Bienvenido a la calculadora! Entre su nombre, por favor:
-    valid_name:       "Por favor asegúrese de usar un nombre válido."
+    valid_name:       "Por favor asegurese de usar un nombre valido."
     number1:          |
 
-                      ¿Cuál es su primera de dos números?
+                      ¿Cual es su primera de dos numeros?
     number2:          |
 
-                      ¿Cuál es su segundo número?
-    invalid_number:   "Hmm ... que no es un número válido. Inténtalo de nuevo."
-    language_options: |
-                      Por favor, seleccione un idioma:
-
-                        1 | Inglés
-                        2 | Español
-                        3 | Hebreo
+                      ¿Cual es su segundo numero?
+    invalid_number:   "Hmm ... que no es un numero valido. Intentalo de nuevo."
+    # language_options: |
+    #                   Por favor, seleccione un idioma:
+    #
+    #                     1 | Ingles
+    #                     2 | Español
+    #                     3 | Hebreo
     invalid_language: |
 
-                      Por favor seleccione sólo el 1, 2 o 3.
+                      Por favor seleccione solo el 1, 2 o 3.
     operation_options: |
-                        ¿Qué operación desea realizar?
+                        ¿Qué operacion desea realizar?
 
                           1 |  SUMAR
                           2 |  RESTAR
@@ -73,8 +73,8 @@
     invalid_operator: |
 
                       Por favor seleccione sólo el 1, 2, 3 o 4.
-    again?:           "¿Le gustaría realizar otro cálculo (s/n)?"
-    goodbye:          "Gracias por usar calculadora. ¡Adiós!"
+    again?:           "¿Le gustaria realizar otro calculo (s/n)?"
+    goodbye:          "Gracias por usar calculadora. ¡Adios!"
 
   hb:
     welcome:          |
