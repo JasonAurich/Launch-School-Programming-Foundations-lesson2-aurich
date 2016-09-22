@@ -74,7 +74,9 @@
 
                       Por favor seleccione sólo el 1, 2, 3 o 4.
     again?:           "¿Le gustaria realizar otro calculo (s/n)?"
-    goodbye:          "Gracias por usar calculadora. ¡Adios!"
+    goodbye:          |
+
+                      Gracias por usar calculadora. ¡Adios!
 
   hb:
     welcome:          |
