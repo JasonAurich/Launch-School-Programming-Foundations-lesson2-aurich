@@ -1,8 +1,9 @@
 require 'yaml'
 
 MESSAGES_FILE = YAML.load_file('calculator_messages.yml')
+LANGUAGE = 'es'
 
-# def language_input
+# def language_selector
 #
 #   lang = ''
 #   message("language_options")
@@ -21,8 +22,6 @@ MESSAGES_FILE = YAML.load_file('calculator_messages.yml')
 #                 'hb'
 #               end
 # end
-
-LANGUAGE = 'es'
 
 def messages(message, lang)
   MESSAGES_FILE[lang][message]
@@ -134,7 +133,6 @@ loop do
   end
 
   message('again?')
-  # gets.chomp.casecmp('y') == 0 ? nil : break
   case LANGUAGE
   when 'en'
     gets.chomp.casecmp('y') == 0 ? nil : break
