@@ -1,0 +1,29 @@
+---
+  en:
+    welcome:        |
+
+                    Welcome to Loan Calculator! Please enter your name:
+    valid_name:     |
+
+                    Please be sure to use a valid name."
+    # greeting:     "Hello, %{name}!"
+    principal:      |
+
+                    What is the principal loan amount?
+    interest_rate:  |
+
+                    As a percentage, what is the monthly interest rate (i.e., 5 is 5%, 2.5 is 2.5%)?
+    loan_term:      |
+
+                    In months, how long is the loan duration?
+    # no_blank:        "Please do not leave it blank."
+    invalid_number: |
+
+                    Hmm ... that isn't a valid number. Try again.
+    # result:           "The result is %{result}."
+    again?:         |
+
+                    Would you like to perform another calculation (y/n)?
+    goodbye:        |
+
+                    Thanks for using calculator. Goodbye!
